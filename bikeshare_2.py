@@ -130,7 +130,6 @@ def trip_duration_stats(df):
     print('-'*40)
 
 def user_stats(df):
-
     """Displays statistics on bikeshare users."""
 
     print('\nCalculating User Stats...\n')
@@ -153,6 +152,25 @@ def user_stats(df):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
+def display_raw_data(df):
+    """Displays five rows of data."""
+    index = 0
+    while True:
+        user_choice = input("enter 'yes' to see next five rows of data or 'no' to skip \n").lower()
+        if (user_choice=="yes"):
+            start_time = time.time()
+            try:
+                print('\nshowing data...\n')
+                for i in range(index,index+5):
+                    print(df.loc[i],"\n")
+                index+=5
+            except Exception as e:
+                print("Sorry looks like you saw all the data rows")
+
+            print("\nThis took %s seconds." % (time.time() - start_time))
+            print('-'*40)
+        else:
+            break
 
 def main():
     while True:
@@ -166,7 +184,7 @@ def main():
         trip_duration_stats(df)
         user_stats(df)
         
-        #display_raw_data(df)
+        display_raw_data(df)
 
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
