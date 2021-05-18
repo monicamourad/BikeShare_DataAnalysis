@@ -119,15 +119,15 @@ def trip_duration_stats(df):
     start_time = time.time()
 
     # display total travel time
-    print("Total travel time is: {}\n".format(df['Trip Duration'].sum()))
+    print("Total travel time is: {} seconds\n".format(df['Trip Duration'].sum()))
 
     # display mean travel time
-    print("Mean travel time is: {}".format(df['Trip Duration'].mean()))
+    print("Mean travel time is: {} seconds".format(df['Trip Duration'].mean()))
+
 
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-
 
 def user_stats(df):
 
@@ -137,13 +137,18 @@ def user_stats(df):
     start_time = time.time()
 
     # Display counts of user types
+    print("Counts of user types are:\n {}\n".format(df['User Type'].value_counts()))
 
+    try:
+        # Display counts of gender
+        print("Counts of gender are:\n {}\n".format(df['Gender'].value_counts()))
 
-    # Display counts of gender
-
-
-    # Display earliest, most recent, and most common year of birth
-
+        # Display earliest, most recent, and most common year of birth
+        print("Earliest year of birth is : {}".format(df['Birth Year'].min()))
+        print("Most recent year of birth is : {}".format(df['Birth Year'].max()))
+        print("Nost common year of birth is : {}".format(df['Birth Year'].mode()[0]))
+    except Exception as e:
+        print("Sorry looks like the city you chose have no records of Gender or Birth Year")
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -161,7 +166,7 @@ def main():
         trip_duration_stats(df)
         user_stats(df)
         
-        #display_raw_data()
+        #display_raw_data(df)
 
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
