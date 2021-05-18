@@ -68,6 +68,20 @@ def load_data(city, month, day):
         df - Pandas DataFrame containing city data filtered by month and day
     """
     df = pd.read_csv(CITY_DATA[city])
+
+    df['Start Time'] = pd.to_datetime(df['Start Time'])
+    df['month'] = df['Start Time'].dt.month_name()
+    df['day_of_week'] = df['Start Time'].dt.day_name()
+
+    if month != all:
+        df = df[df['month'] == month.title()]
+    if day != all:
+        df = df[df['day_of_week'] == day.title()]
+
+    if len(df.index) ==0:
+        print("\n Your choices resulted in an empty data set \n Please try another combination \n")   
+        city, month, day = get_filters()
+
     return df
 
 def time_stats(df):
@@ -76,9 +90,6 @@ def time_stats(df):
     print('\nCalculating The Most Frequent Times of Travel...\n')
     start_time = time.time()
 
-    df['Start Time'] = pd.to_datetime(df['Start Time'])
-    df['month'] = df['Start Time'].dt.month_name()
-    df['day_of_week'] = df['Start Time'].dt.day_name()
     df['hour'] = df['Start Time'].dt.hour
 
     # display the most common month
@@ -165,7 +176,7 @@ def display_raw_data(df):
                     print(df.loc[i],"\n")
                 index+=5
             except Exception as e:
-                print("Sorry looks like you saw all the data rows")
+                print("Sorry looks like you saw all the data rows\n")
 
             print("\nThis took %s seconds." % (time.time() - start_time))
             print('-'*40)
