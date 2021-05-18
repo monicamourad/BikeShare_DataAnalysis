@@ -15,12 +15,12 @@ def get_filters():
         (str) month - name of the month to filter by, or "all" to apply no month filter
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
-    print('Hello! Let\'s explore some US bikeshare data!')
+    print('\nHello! Let\'s explore some US bikeshare data!')
     # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     valid_city_input=["c","w","nyc"]
     city = ""
     while True:
-        city=input("please enter desired city: 'c' for chicago, 'w' for washington and 'nyc' for new york city = ").lower()
+        city=input("\nplease enter desired city: 'c' for chicago, 'w' for washington and 'nyc' for new york city = ").lower()
         if city in valid_city_input:
             break
         else:
@@ -37,7 +37,7 @@ def get_filters():
     valid_month_input=["all", "january", "february", "march","april" ,"may", "june"]
     month = ""
     while True:
-        month=input("please enter desired month: ('january', 'february', ... , 'june') OR 'all' to not apply any filter = ").lower()
+        month=input("\nplease enter desired month: ('january', 'february', ... , 'june') OR 'all' to not apply any filter = ").lower()
         if month in valid_month_input:
             break
         else:
@@ -47,7 +47,7 @@ def get_filters():
     valid_day_input=["all", "monday", "tuesday", "wednesday","thursday" ,"friday", "saturday","sunday"]
     day = ""
     while True:
-        day=input("please enter desired day of week: ('monday', 'tuesday', ... 'sunday') OR 'all' to not apply any filter = ").lower()
+        day=input("\nplease enter desired day of week: ('monday', 'tuesday', ... 'sunday') OR 'all' to not apply any filter = ").lower()
         if day in valid_day_input:
             break
         else:
@@ -72,7 +72,7 @@ def load_data(city, month, day):
 
 def time_stats(df):
     """Displays statistics on the most frequent times of travel."""
-
+    print('-'*40)
     print('\nCalculating The Most Frequent Times of Travel...\n')
     start_time = time.time()
 
@@ -82,10 +82,10 @@ def time_stats(df):
     df['hour'] = df['Start Time'].dt.hour
 
     # display the most common month
-    print("Most common month is: {}".format(df['month'].mode()[0]))
+    print("Most common month is: {}\n".format(df['month'].mode()[0]))
     
     # display the most common day of week
-    print("Most common day of week is: {}".format(df['day_of_week'].mode()[0]))
+    print("Most common day of week is: {}\n".format(df['day_of_week'].mode()[0]))
 
     # display the most common start hour
     print("Most common hour is: {}:00".format(df['hour'].mode()[0]))
@@ -98,7 +98,6 @@ def station_stats(df):
 
     print('\nCalculating The Most Popular Stations and Trip...\n')
     start_time = time.time()
-
     # display most commonly used start station
 
 
@@ -129,6 +128,7 @@ def trip_duration_stats(df):
 
 
 def user_stats(df):
+
     """Displays statistics on bikeshare users."""
 
     print('\nCalculating User Stats...\n')
@@ -151,12 +151,14 @@ def main():
     while True:
         city, month, day = get_filters()
         df = load_data(city, month, day)
+        print('\n',df)
+
 
         time_stats(df)
         station_stats(df)
         trip_duration_stats(df)
         user_stats(df)
-
+        
         #display_raw_data()
 
         restart = input('\nWould you like to restart? Enter yes or no.\n')
