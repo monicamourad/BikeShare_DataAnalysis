@@ -10,18 +10,18 @@ In this project, I made use of data provided by Motivate, a bike share system pr
 # Overview
 In this project, I make use of Python to explore data related to bike share systems for three major cities in the United States—Chicago, New York City, and Washington. I wrote code to import the data and answer interesting questions about it by computing descriptive statistics. I also wrote a script that takes in raw input to create an interactive experience in the terminal to present these statistics.
 
-# The Datasets (couldn't be uploaded due to size)
-Randomly selected data for the first six months of 2017 are provided for all three cities. All three of the data files contain the same core six (6) columns:
-Start Time (e.g., 2017-01-01 00:07:57)
-End Time (e.g., 2017-01-01 00:20:53)
-Trip Duration (in seconds - e.g., 776)
-Start Station (e.g., Broadway & Barry Ave)
-End Station (e.g., Sedgwick St & North Ave)
-User Type (Subscriber or Customer)
+# The Datasets ([cities data](https://drive.google.com/drive/folders/1un5wJdwv-7ca3z8xNWPBfhoAzvqFiGMQ?usp=sharing))
+Randomly selected data for the first six months of 2017 are provided for all three cities. All three of the data files contain the same core six (6) columns:<br />
+Start Time (e.g., 2017-01-01 00:07:57)<br />
+End Time (e.g., 2017-01-01 00:20:53)<br />
+Trip Duration (in seconds - e.g., 776)<br />
+Start Station (e.g., Broadway & Barry Ave)<br />
+End Station (e.g., Sedgwick St & North Ave)<br />
+User Type (Subscriber or Customer)<br />
 
-The Chicago and New York City files also have the following two columns:
-Gender
-Birth Year
+The Chicago and New York City files also have the following two columns:<br />
+Gender<br />
+Birth Year<br />
 
 ![image](https://user-images.githubusercontent.com/45936612/118685217-30519e00-b803-11eb-81ac-bb407c22d256.png)
                           *Data for the first 10 rides in the new_york_city.csv file*
@@ -51,3 +51,8 @@ average travel time <br />
 counts of each user type <br />
 counts of each gender (only available for NYC and Chicago) <br />
 earliest, most recent, most common year of birth (only available for NYC and Chicago) <br />
+
+# Softwares needed:
+* Python 3, NumPy, and Pandas installed using Anaconda <br />
+* A text editor, like VS Code or Atom. <br />
+* A terminal application (Terminal on Mac and Linux or Cygwin on Windows). <br />
